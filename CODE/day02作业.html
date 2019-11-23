@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>day02</title>
+    <style>
+        form{counter-reset: biaoji;font:500 16px/2 ""}
+        p::before{content: counters(biaoji,'-')'.';counter-increment:biaoji;}
+       
+   
+     .main{ width:500px; margin: 50px auto; }
+     .main .step{
+          padding-left: 43px;
+          color: #384313; font-size: 16px; font-weight: bold;
+         text-shadow: 0 1px 1px #c0d576; line-height: 40px;
+     }
+     .main ul li {
+          width: 400px; height: 25px;
+          padding-left: 10px;padding-top: 5px; padding-bottom: 5px;
+          background: rgba(255, 255, 255, .3);
+          margin: auto; border: solid 2px #e3ebc3;
+          border-color: rgba(255, 255, 255, .6);
+          border-radius: 5px; margin-bottom: 4px;
+     }
+     .main ul li label{
+          font-size: 13px; width: 110px; color: #111111;
+          padding-left: 5px;
+     }
+     .main ul li input{
+          border-radius: 3px;
+          border: #FC3 solid 1px;
+          width: 250px; height: 25px; outline: none;
+          padding-left: 5px; margin-left: 35px;
+     }
+     .main .savebtn{
+          display: block; width: 140px; height: 40px; line-height: 40px;
+          text-align: center; color: #E3EBC3;
+          font-weight: bold; cursor: pointer;
+          border-radius: 5px; margin: 10px auto;
+          box-shadow: 1px 1px 1px 0px gray;
+          background: linear-gradient(#50B9FD,#1158A8);
+     }
+    </style>
+</head>
+<body>
+    <form action="#">
+    <p>判断用户输入的数字是否为闰年？<input type="text" name="" id="txt1"><input type="button" name="" id="btn1" value="点击试试"></p>
+    <p>判断一个整数属于哪个范围：大于0；小于0；等于0<input type="text" name="" id="txt2"><input type="button" name="" id="btn2" value="点击试试"></p>
+    <p>判断一个整数是偶数还是奇数，并输出判断结果<input type="text" name="" id="txt3"><input type="button" name="" id="btn3" value="点击试试"></p>
+    <p>开发一款软件，根据公式（身高-108）*2=体重，可以有10斤左右的浮动。来观察测试者体重是否合适<input type="text" name="" id="txt4" placeholder="身高/m"><input type="text" name="" id="txt5" placeholder="体重/kg"><input type="button" name="" id="btn4" value="点击试试"></p>
+    <p>输入数字，显示星期几<input type="text" name="" id="txt6"><input type="button" name="" id="btn6" value="点击试试"></p>
+    <p>输入成绩分数，判定成绩等级(if写法)<input type="text" name="" id="txt7"><input type="button" name="" id="btn7" value="点击试试"></p>
+    <p>输入成绩分数，判定成绩等级(switch写法)<input type="text" name="" id="txt8"><input type="button" name="" id="btn8" value="点击试试"></p>
+    <p>输入月份，显示当月的天数要求：1) 利用case穿透简化代码<input type="text" name="" id="txt9"><input type="button" name="" id="btn9" value="点击试试"></p>
+    <p>小贺刚上班，按工作时间小时制领取周工资，工资标准是，每小时rate元RMB。每周工作时间40小时，如果要加班，超出部分按正常工资的1.5倍计（老板还算不错）。这周小贺上班的时间为hour小时，请编程序，输入rate和hour，输出小贺本周的薪水。<input type="text" name="" id="txt10" placeholder="时薪"><input type="text" name="" id="txt11" placeholder="工作时间"><input type="button" name="" id="btn10" value="点击试试"></p>
+    <p>根据一个数字日期，判断这个日期是这一年的第几天例如： 2016和02和11，计算后结果为42（通过数组+循环的方法）<input type="text" name="" id="txt12" placeholder="年"><input type="text" name="" id="txt13" placeholder="月"><input type="text" name="" id="txt14" placeholder="日"><input type="button" name="" id="btn11" value="点击试试"></p>
+    <p>根据一个数字日期，判断这个日期是这一年的第几天例如： 2016和02和11，计算后结果为42（通过switch的方法）<input type="text" name="" id="txt16" placeholder="年"><input type="text" name="" id="txt17" placeholder="月"><input type="text" name="" id="txt18" placeholder="日"><input type="button" name="" id="btn13" value="点击试试"></p>
+    </form>
+    <div class="main">
+          <span class="step">Step1:用户详细资料</span>
+          <ul>
+              <li>
+                   <label>用户名称:</label>
+                   <input type="text" placeholder="请输入用户名" id="txt15" />
+              </li>
+              <li>
+                   <label>邮件地址:</label>
+                   <input type="text" placeholder="example@qq.com" />
+              </li>
+              <li>
+                   <label>练习电话:</label>
+                   <input type="text" placeholder="18566666666" id="tel"/>
+              </li>
+          </ul>
+          <span class="step">Step2:家庭住址（收货地址）</span>
+          <ul>
+              <li>
+                   <label>详细地址:</label>
+                   <input type="text" placeholder="请输入用户名" />
+              </li>
+              <li>
+                   <label>邮政编码:</label>
+                   <input type="text" placeholder="example@qq.com" />
+              </li>
+              <li>
+                   <label>国&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;家:</label>
+                   <input type="text" placeholder="13539008452" />
+              </li>
+          </ul>
+          <span class="savebtn" id="btn12">保存</span>
+     </div>
+</body>
+<script>
+    // 判断用户输入的数字是否为闰年？
+    var txt1 = document.getElementById("txt1");
+    var btn1 = document.getElementById("btn1");
+    btn1.onclick = function(){
+        if(txt1.value % 4 == 0 && txt1.value %100 !=0 || txt1.value %400 == 0)
+        {
+            console.log("闰年");
+        }
+        else
+        {
+            console.log("平年");
+        }
+    }
+
+    // 判断一个整数属于哪个范围：大于0；小于0；等于0
+    var txt2 = document.getElementById("txt2");
+    var btn2 = document.getElementById("btn2");
+    btn2.onclick = function(){
+        if(txt2.value > 0)
+        {
+            console.log("大于0");
+        }
+        else if(txt2.value == 0)
+        {
+            console.log("等于0");
+        }
+        else
+        {
+            console.log("小于0");
+        }
+    }
+
+    // 判断一个整数是偶数还是奇数，并输出判断结果
+    var txt3 = document.getElementById("txt3");
+    var btn3 = document.getElementById("btn3");
+    btn3.onclick = function(){
+        if(txt3.value % 2 == 0)
+        {
+            console .log ("偶数");
+        }
+        else
+        {
+            console.log("奇数");
+        }
+    }
+
+    // 开发一款软件，根据公式（身高-108）*2=体重，可以有10斤左右的浮动。来观察测试者体重是否合适
+    var txt4 = document.getElementById("txt4");
+    var txt5 = document.getElementById("txt5");
+    var btn4 = document.getElementById("btn4");
+    btn4.onclick = function(){
+        if(((txt4.value*100) - 108)*2 > ((txt5.value*2) + 10))
+        {
+            console.log("太瘦");
+        }
+        else if(((txt4.value*100) - 108)*2 < ((txt5.value*2) - 10))
+        {
+            console.log("太胖");
+        }
+        else
+        {
+            console.log("正常");
+        }
+    }
+
+    // 输入数字，显示星期几
+    var txt6 = document.getElementById("txt6");
+    var btn6 = document.getElementById("btn6");
+    btn6.onclick = function(){
+        var day = parseInt(txt6.value);
+        switch(day){
+            case 0 :
+                console.log("星期天");
+                break;
+            case 1 :
+                console.log("星期一");
+                break;
+            case 2 :
+                console.log("星期二");
+                break;
+            case 3 :
+                console.log("星期三");
+                break;
+            case 4 :
+                console.log("星期四");
+                break;
+            case 5 :
+                console.log("星期五");
+                break;
+            case 6 :
+                console.log("星期六");
+                break;
+            default:
+                console.log("请输入0-6之中的数字");
+                    
+        }
+    }
+
+    // 输入成绩分数，判定成绩等级(if写法)
+    var txt7 = document.getElementById("txt7");
+    var btn7 = document.getElementById("btn7");
+    btn7.onclick = function(){
+        if(txt7.value < 60 && txt7.value >=0)
+        {
+            console.log("不及格");
+        }
+        else if(txt7.value>=60 && txt7.value<70 )
+        {
+            console.log("一般");
+        }
+        else if(txt7.value>=70 && txt7.value<80 )
+        {
+            console.log("中等");
+        }
+        else if(txt7.value>=80 && txt7.value<90 )
+        {
+            console.log("良好");
+        }
+        else if(txt7.value>=90 && txt7.value<100 )
+        {
+            console.log("优秀");
+        }
+        else
+        {
+            console.log("请输入0-100以内的数字")
+        }
+    }
+
+        // 输入成绩分数，判定成绩等级(switch写法)
+        var txt8 = document.getElementById("txt8");
+        var btn8 = document.getElementById("btn8");
+        btn8.onclick = function(){
+            var day = Math.floor(parseInt(txt8.value)/10);
+            switch(day){
+                case 10:
+                    console.log("满分");
+                    break;
+                case 9:
+                    console.log("优秀");
+                    break;
+                case 8:
+                    console.log("良好");
+                    break;
+                case 7:
+                    console.log("一般");
+                    break;
+                case 6:
+                    console.log("及格");
+                    break;
+                default:
+                    console.log("不及格")
+
+            }
+        }
+
+        // 输入月份，显示当月的天数要求：1) 利用case穿透简化代码
+        var txt9 = document.getElementById("txt9");
+        var btn9 = document.getElementById("btn9");
+        btn9.onclick = function(){
+            var day = Number(txt9.value);
+            switch(day){
+                case 1:
+                    console.log("31天");
+                    break;
+                case 2:
+                    console.log("28天");
+                    break;
+                case 3:
+                    console.log("31天");
+                    break;
+                case 4:
+                    console.log("30天");
+                    break;
+                case 5:
+                    console.log("31天");
+                    break;
+                case 6:
+                    console.log("30天");
+                    break;
+                case 7:
+          
+               
+                case 8:
+                    console.log("31天");
+                    break;
+                case 9:
+                    console.log("30天");
+                    break;
+                case 10:
+                    console.log("31天");
+                    break;
+                case 11:
+                    console.log("30天");
+                    break;
+                case 12:
+                    console.log("31天");
+                    break;
+                default:
+                    console.log("请输入0-12以内的数字");
+            }
+        }
+
+        // 小贺刚上班，按工作时间小时制领取周工资，工资标准是，每小时rate元RMB。每周工作时间40小时，如果要加班，超出部分按正常工资的1.5倍计（老板还算不错）。这周小贺上班的时间为hour小时，请编程序，输入rate和hour，输出小贺本周的薪水。 
+        var txt10 = document.getElementById("txt10");
+        var txt11 = document.getElementById("txt11");
+        var btn10 = document.getElementById("btn10");
+        var money =0;
+        btn10.onclick = function(){
+            if(txt11.value<=40)
+            {
+                money = txt10.value * txt11.value;
+            }
+            else
+            {
+                money = txt10.value * 40 + (txt11.value-40)*(txt10.value*1.5)
+            }
+            console.log(money);
+        }
+
+        // 1.根据一个数字日期，判断这个日期是这一年的第几天例如： 2016和02和11，计算后结果为42（通过数组+循环的方法）
+        var txt12 = document.getElementById("txt12");
+        var txt13 = document.getElementById("txt13");
+        var txt14 = document.getElementById("txt14");
+        var btn11 = document.getElementById("btn11");
+        btn11.onclick = function(){
+            var day = new Array;
+            var sum =0;
+            if (txt12.value%4==0 &&txt12.value%100!=0 ||txt12.value%400==0)
+            {
+                day = [31,29,31,30,31,30,31,31,30,31,30,31];
+            }
+            else
+            {
+                day = [31,28,31,30,31,30,31,31,30,31,30,31];
+            }
+            for(var i=0;i<(txt13.value-1);i++)
+            {
+                sum += day[i];
+            }
+            sum += Number(txt14.value);
+            console.log(sum);
+        }
+
+        // 1.根据一个数字日期，判断这个日期是这一年的第几天例如： 2016和02和11，计算后结果为42（通过switch的方法）
+        var txt16 = document.getElementById("txt16");
+        var txt17 = document.getElementById("txt17");
+        var txt18 = document.getElementById("txt18");
+        var btn13 = document.getElementById("btn13");
+        btn13.onclick = function(){
+            var m = txt17.value -1;
+            var day=0;
+            switch(m)
+            {
+                case 12 :day+=31;
+                case 11 :day+=30;
+                case 10:day+=31;
+                case 9 :day+=30;
+                case 8 :day+=31;
+                case 7 :day+=31;
+                case 6 :day+=30;
+                case 5 :day+=31;
+                case 4 :day+=30;
+                case 3 :day+=31;
+                case 2 :
+                    if(txt16.value%4==0 &&txt16.value%100!=0 ||txt16.value%400==0)
+                    {
+                        day+=29;
+                    }
+                    else
+                    {
+                        day+=28;
+                    }
+                case 1 :day+=31;
+            }
+            day += Number(txt18.value);
+            console.log(day);
+        }
+
+        // 要求：1）点击保存按钮时，使用JS判断用户的联系电话是否为纯数字，如果用户输入有错误，使用alert()弹框警告2）判断用户名是否填写，如果空白，使用alert弹框警告
+        var txt15 = document.getElementById("txt15");
+        var tel = document.getElementById("tel");
+        var btn12 = document.getElementById("btn12");
+        btn12.onclick = function(){
+            if(!txt15.value)
+            {
+                alert("用户名未填写，请重新输入");
+            }
+            if(isNaN(tel.value))
+            {
+                alert("联系电话不是纯数字，请重新输入");
+            }
+        }
+
+</script>
+</html>

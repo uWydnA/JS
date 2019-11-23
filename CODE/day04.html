@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="#">
+        <input type="text" id="txt1">
+        <select name="" id="fh">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <input type="text" id="txt2">
+        <input type="button" id="btn" value="=">
+        <input type="text" id="txt3" disabled>
+    </form>
+</body>
+<script>
+    // 1.编写一个函数，计算两个数字的和／差／积／商 要求：使用传参的方式
+    var fn = function (x, y) {
+        var result = [];
+        result[0] = x + y;
+        result[1] = x - y;
+        result[2] = x * y;
+        result[3] = x / y;
+        for (var i = 0; i <= 3; i++) {
+            console.log(result[i]);
+        }
+    };
+    fn(12, 24);
+
+    // 2.编写一个函数，计算三个不同数字的大小，按从小到大顺序打印 穷举法
+    var arr1 = [4, 2, 6, 5, 7, 1, 11, 10, 100, 60, 59, 30, 20, 39, 650, 23, 11, 23, 45, 567, 68, 79]
+
+    function fn1(arr1) {
+        var result = [];
+        for (var i = 0; i < arr1.length - 1; i++) {
+            for (var j = i + 1; j < arr1.length; j++) {
+                var temp;
+                if (arr1[i] > arr1[j]) {
+                    temp = arr1[i];
+                    arr1[i] = arr1[j];
+                    arr1[j] = temp;
+                }
+            }
+        }
+    }
+    fn1(arr1);
+    console.log(arr1);
+
+    // 编写任意个任意数字的求和／积的函数
+    function fn2() {
+        var sum = 0,
+            cj = 1;
+        for (var i = 0; i < arguments.length; i++) {
+            sum += arguments[i];
+            cj *= arguments[i];
+        }
+        console.log(sum, cj);
+    }
+    fn2(1, 2, 3, 4, 5);
+
+    // 1.编写一个函数，计算任意两个数字之间所能组成的两位数的奇数，数字必须是个位数 比如： 计算0，3之间能组成的奇数个是01、21、03、13、23、31
+    function fn3(x, y) {
+        if (x > y) {
+            var sum3 = [];
+            var result;
+            for (var i = 0; x >= y; i++, y++) {
+                sum3[i] = y;
+            }
+            // console.log(sum3);
+            for (var i = 0; i < sum3.length; i++) {
+                for (var j = 0; j < sum3.length; j++) {
+                    if (sum3[i] == sum3[j]) {
+                        continue;
+                    }
+                    result = sum3[i] * 10 + sum3[j];
+                    if (result % 2 != 0) {
+                        console.log(result);
+                    }
+                }
+            }
+        } else if (x < y) {
+            var sum3 = [];
+            var result;
+            for (var i = 0; x <= y; i++, x++) {
+                sum3[i] = x;
+            }
+            // console.log(sum3);
+            for (var i = 0; i < sum3.length; i++) {
+                for (var j = 0; j < sum3.length; j++) {
+                    if (sum3[i] == sum3[j]) {
+                        continue;
+                    }
+                    result = sum3[i] * 10 + sum3[j];
+                    if (result % 2 != 0) {
+                        console.log(result);
+                    }
+                }
+            }
+        } else {
+            console.log("请输入2个不同的0-9数字")
+        }
+    }
+    fn3(0, 9);
+
+
+    //     2.某个公司采用公用电话传递数据，数据是四位的整数，在传递过程中是加密的，加密规则如下：每位数字都加上5,然后用除以10的余数代替该数字，再将第一位和第四位交换，第二位和第三位交换，请编写一个函数，传入原文，输出密文
+
+    // 3   7   1  6
+
+    // 8  12  6  11
+
+    // 8   2   6   1
+
+    // 1   6    2   8
+
+    function fn4(x) {
+        var res = x + "";
+        var arr = [];
+        var count = 1;
+        var numArr = res.split("");
+        while (1) {
+            x = parseInt(x / 10);
+            if (x <= 1) {
+                break;
+            }
+            count++;
+        }
+        for (var i = 0; i < count; i++) {
+            arr[i] = parseInt(numArr[i]);
+        }
+        for (var i = 0; i < count; i++) {
+            arr[i] += 5;
+            arr[i] %= 10;
+        }
+        for (var i = 0; i < arr.length / 2; i++) {
+            var temp = arr[i];
+            arr[i] = arr[arr.length - (i + 1)];
+            arr[arr.length - (i + 1)] = temp;
+        }
+        console.log(arr)
+    }
+    fn4(3716);
+    fn4(371637163716);
+
+    // 简单计算器
+    var txt1 = document.getElementById("txt1");
+    var txt2 = document.getElementById("txt2");
+    var txt3 = document.getElementById("txt3");
+    var btn = document.getElementById("btn");
+    var fh = document.getElementById("fh");
+    btn.onclick = function () {
+        var n1 = parseInt(txt1.value);
+        var n2 = parseInt(txt2.value);
+        var n3 = parseInt(txt3.value);
+        var f = fh.value;
+        switch (f) {
+            case "+":
+                n3 = n1 + n2;
+                break;
+            case "-":
+                n3 = n1 - n2;
+                break;
+            case "*":
+                n3 = n1 * n2;
+                break;
+            case "/":
+                n3 = n1 / n2;
+                break;
+            case "%":
+                n3 = n1 % n2;
+                break;
+        }
+        txt3.value = n3;
+    }
+</script>
+
+</html>

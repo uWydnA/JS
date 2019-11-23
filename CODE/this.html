@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function getAge() {
+        return 2000 - this.birth;
+    }
+
+
+    var xiaoming = {
+        name: '小明',
+        birth: 1990,
+        age: function () {
+            var that = this;
+
+            function getAgeFromBirth() {
+                return 2000 - that.birth;
+            }
+            return getAgeFromBirth();
+        }
+    };
+
+    console.log(getAge.apply(xiaoming,[]));
+
+    console.log(xiaoming.age());
+
+
+    var daming = {
+        name: '大明',
+        birth: 1900,
+        age: function () {
+
+            function getAgeFromBirth() {
+
+                return 1200 - this.birth;
+            }
+
+            return getAgeFromBirth.apply(daming,[]);
+        }
+    };
+
+    console.log(daming.age.apply(xiaoming, []));
+    console.log(daming.age());
+
+    var myFunction = function () {
+        console.log(1);
+    }();
+
+ 
+
+
+</script>
+
+</html>

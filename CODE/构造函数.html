@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // function Person() {};
+
+    // function fn() {};
+    // var person1 = new Person();
+    // var person2 = new Person();
+    // // console.log(person1.constructor);
+    // // console.log(fn.constructor);
+    // // console.log(Person.constructor) // 输出结果:[Function: Function]
+    // // console.log(Function.constructor) // 输出结果:[Function: Function]
+    // // console.log(Object.constructor) // 输出结果:[Function: Function]
+    // console.log(person1);
+    // // console.log(Person);
+
+    // // person1.sayHello = function () {
+    // //     console.log('Hello!')
+    // // }
+    // // person2.sayHello = function () {
+    // //     console.log('Hello!')
+    // // }
+    // // console.log(person1.sayHello === person2.sayHello) // false，它们不是同一个方法，各自占有内存
+
+    // // Person.prototype.sayHello = function () {
+    // //     console.log('Hello!')
+    // // }
+    // // console.log(person1.sayHello === person2.sayHello) // true，同一个方法
+
+    // // person1.constructor = Function
+    // // console.log(person1.constructor) // [Function: Function]
+    // // console.log(person2.constructor) // [Function: Person] ！不是同步为[Function: Function]
+    // // console.log(person1);
+    // // console.log(Person.prototype.__proto__.constructor)
+
+    // function Fn() {};
+    // console.log(Fn.sayName());
+    function Cat(name) {
+        this.name = name,
+        this.say = function(){
+            return("Hello, " + this.name + "!");
+        }
+    }
+  
+    
+    var kitty = new Cat('Kitty');
+    var doraemon = new Cat('哆啦A梦');
+    if (kitty && kitty.name === 'Kitty' && kitty.say && typeof kitty.say === 'function' && kitty.say() ===
+        'Hello, Kitty!' && kitty.say === doraemon.say) {
+        console.log('测试通过!');
+    } else {
+        console.log('测试失败!');
+    }
+    console.log(kitty.say === doraemon.say)
+</script>
+
+</html>

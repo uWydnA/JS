@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var person = {
+        name: '小明',
+        age: 20,
+        gender: 'male',
+        passport: 'G-12345678',
+        school: 'No.4 middle school'
+    };
+    var {name} = person;
+    console.log(name);
+    console.log(typeof name);
+
+    function buildDate({year, month, day, hour=0, minute=0, second=0}) {
+    return new Date(year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second);
+    var _now = buildDate({year:2019,month:11,day:19,hour:19,minute:20});
+    console.log(_now);
+
+    var [x,y,z] = ["烂","肉","面"];
+    console.log(x);
+    console.log(y);
+    console.log(z);
+</script>
+
+</html>

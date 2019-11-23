@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var obj = {
+    //     birth: 1990,
+    //     getAge: function () {
+    //         var fn = () => new Date().getFullYear() - this.birth; // this指向obj对象
+    //         return fn();
+    //     }
+    // };
+    var obj = {
+        birth: 1990,
+        getAge: function (years) {
+            var b = this.birth; // 1990
+            var fn = (y) => y - this.birth; // this.birth仍是1990
+            return fn.call({birth: 2000},years);
+        }
+    };
+    console.log(obj.getAge(2019)); // 29
+</script>
+
+</html>

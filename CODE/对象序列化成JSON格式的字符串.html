@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var xiaoming = {
+        name: '小明',
+        age: 14,
+        gender: true,
+        height: 1.65,
+        grade: null,
+        'middle-school': '\"W3C\" Middle School',
+        skills: ['JavaScript', 'Java', 'Python', 'Lisp']
+    };
+    var daming = {
+        name: '小明',
+        age: 14,
+        gender: true,
+        height: 1.65,
+        grade: null,
+        'middle-school': '\"W3C\" Middle School',
+        skills: ['JavaScript', 'Java', 'Python', 'Lisp'],
+        toJSON: function(){
+            return {
+                "name": this.name,
+                "age": this.age
+            }
+        }
+    };
+
+    function convert(key, value) {
+        if (typeof value === 'string') {
+            return value.toUpperCase();
+        }
+        return value;
+    }
+    var s = JSON.stringify(xiaoming, null, '  ');
+    var x = JSON.stringify(xiaoming, ["name", "age"], '  ');
+    var c = JSON.stringify(xiaoming, convert, '   ')
+    console.log(s);
+    console.log(x);
+    console.log(c);
+    var v = JSON.stringify(daming);
+    console.log(v);
+</script>
+
+</html>

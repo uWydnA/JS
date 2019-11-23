@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function fn4(x) {
+        var res = x+"";
+        var arr = [];
+        var count = 1;
+        var numArr = res.split("");
+        while (1) {
+            x = parseInt(x / 10);
+            if (x <= 1) {
+                break;
+            }
+            count++;
+        }
+        for (var i = 0; i < count; i++) {
+            arr[i] = numArr[i]
+        }
+      
+   
+    }
+    fn4(2234);
+</script>
+
+</html>

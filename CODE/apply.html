@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var oldParseInt = parseInt;
+    console.log(oldParseInt("10"));
+    var count = 0;
+    window.parseInt = function(){
+        count+=1;
+        // return oldParseInt(arguments[0]);
+        return oldParseInt.apply(window,arguments);
+    }
+
+    console.log(parseInt("10"));
+    console.log(parseInt("11"));
+    console.log(parseInt("12"));
+    console.log(parseInt("13"));
+    console.log(parseInt("14"));
+    console.log(parseInt("15"));
+ 
+    console.log(count);
+</script>
+</html>

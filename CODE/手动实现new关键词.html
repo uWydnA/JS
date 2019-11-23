@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function Person(identity) {
+        this.ming = identity || 'Person'
+    }
+    // var son = {};
+    // son.__proto__= Person.prototype;
+    // Person.apply(son,['i am son!']);
+    // console.log(son.constructor);
+    // console.log(son.ming);
+
+    function _new(Fn) {
+        return function() {
+            var obj = {
+                __proto__: Fn.prototype
+            };
+            Fn.apply(obj, arguments);
+            return obj;
+        }
+    }
+
+    var son1 = _new(Person)("我是儿子一号");
+    console.log(son1)
+    console.log(son1.constructor);
+    console.log(son1.ming)
+</script>
+
+</html>

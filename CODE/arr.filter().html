@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var arr = ['A', '', 'B', null, undefined, 'C', '  '];
+    var r = arr.filter(function (s) {
+        // return s && s.trim(); // 注意：IE9以下的版本没有trim()方法
+        return function(s){
+            if(s)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }()
+    });
+    console.log(r); // ['A', 'B', 'C']
+</script>
+
+</html>

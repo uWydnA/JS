@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>day02作业</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #txt1{width: 101.23px;height: 300px;border: 0;background: #f99;}
+        #txt2{width: 223.45px;height: 300px;border: 0;background: #99f;}
+    </style>
+</head>
+<body>
+    <input type="text" name="" id="txt1">
+    <input type="text" name="" id="txt2">
+</body>
+<script>
+    // 1.计算两个文本框的和
+    var sum = document.getElementById("txt1").offsetWidth + document.getElementById("txt2").offsetWidth ;
+    console.log(parseInt(sum));
+    // 2.计算两个文本框的差
+    var reduce = document.getElementById("txt1").offsetWidth - document.getElementById("txt2").offsetWidth ;
+    console.log(reduce);
+    // 3.计算两个文本框的商
+    var divide = document.getElementById("txt1").offsetWidth / document.getElementById("txt2").offsetWidth ;
+    console.log(divide);
+    // 4.计算两个文本框的积
+    var product = document.getElementById("txt1").offsetWidth * document.getElementById("txt2").offsetWidth ;
+    console.log(product);
+
+    
+</script>
+</html>

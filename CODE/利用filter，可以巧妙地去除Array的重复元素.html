@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>利用filter，可以巧妙地去除Array的重复元素</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 去除重复元素依靠的是indexOf总是返回第一个元素的位置，后续的重复元素位置与indexOf返回的位置不相等，因此被filter滤掉了。
+    var _name = ["andy","wu","bailang","tianma","liyang","andy","wu","andy","wu","wu","yue","hui"]
+    var r=_name.filter(function(element,index,self){
+        return self.indexOf(element) === index
+    })
+</script>
+</html>

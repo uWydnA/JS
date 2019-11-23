@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BMI指数测试</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    'use strict';
+    var height = parseFloat(prompt('请输入身高(m):'));
+    var weight = parseFloat(prompt('请输入体重(kg):'));
+    var bmi = weight / (height * height);
+    if (bmi < 18.6) {
+        document.write("过轻");
+    } else if (bmi >= 18.5 && bmi < 25) {
+        document.write("正常");
+    } else if (bmi >= 25 && bmi < 28) {
+        document.write("过重");
+    } else if (bmi >= 28 && bmi < 32) {
+        document.write("肥胖");
+    } else {
+        document.write("严重肥胖");
+    }
+</script>
+
+</html>

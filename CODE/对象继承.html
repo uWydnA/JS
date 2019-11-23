@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var Student = {
+        name: 'Robot',
+        height: 1.2,
+        run: function () {
+            console.log(this.name + ' is running...');
+        }
+    };
+
+    var xiaoming = {
+        name: '小明'
+    };
+    console.log(Student.__proto__);
+
+    xiaoming.__proto__ = Student;
+</script>
+
+</html>

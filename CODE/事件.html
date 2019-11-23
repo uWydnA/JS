@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件</title>
+    <style>
+        body{height: 1000px;}
+        #mouse{width: 300px;height: 300px;box-shadow: 0 0 5px #000;background-image: linear-gradient(rgba(255,255,255,.5) 30% ,transparent);background-color: #000;}
+        #key{width: 200px;height: 50px;box-shadow: 0 0 5px #000;background: #f99;margin: 40px 0;}
+    </style>
+</head>
+<body>
+    
+    <div id="mouse"></div>
+    <form action="#" id="sub">
+        <input type="text"  id="key" >
+        <input type="text" id="txt">
+        <input type="submit" value="submit">
+        <input type="reset" value="reset">
+    </form>
+
+</body>
+<script>
+    // 鼠标事件
+    var mouse = document.getElementById("mouse");
+    mouse.onclick = ()=>{console.log("您刚刚单击了div，触发了onclick事件")};
+    mouse.ondblclick = ()=>{console.log("您刚刚双击了div，触发了ondblclick事件")};
+    mouse.oncontextmenu = ()=>{console.log("您刚刚右键了div，触发了oncontextmenu事件")};
+    mouse.onmousedown = () =>{console.log("您刚刚在div处按下了鼠标，触发了onmousedown事件")};
+    mouse.onmouseup = () =>{console.log("您刚刚在div处抬起了鼠标，触发了onmouseup事件")};
+    mouse.onmousemove = () =>{console.log("您刚刚在div处移动了鼠标，触发了onmousemove事件")};
+    mouse.onmouseover = () =>{console.log("您刚刚进入了div，触发了onmouseover事件")};
+    mouse.onmouseout = () =>{console.log("您刚刚离开了div，触发了onmouseout事件")};
+    // 键盘事件
+    var key = document.getElementById("key");
+    key.onkeydown = ()=>{console.log("您刚刚在文本框里按下了键盘，触发了onkeydown事件")};
+    key.onkeyup = ()=>{console.log("您刚刚在文本框处抬起了键盘，触发了onkeyup事件")};
+    key.onkeypress =()=>{console.log("您刚刚在文本框处敲击了键盘，触发了onkeypress事件")};
+    // 表单事件
+    var txt = document.getElementById("txt");
+    txt.onfocus = ()=>{console.log("您刚刚让文本框获得了焦点，触发了onfocus事件")};
+    txt.onblur = ()=>{console.log("您刚刚让文本框失去了焦点，触发了onblur事件")};
+    txt.onchange = ()=>{console.log("您刚刚让文本框的内容发生改变，触发了onchange事件")};
+    txt.oninput = ()=>{console.log("你刚刚在文本框内输入，触发了oninput事件")};
+    var sub = document.getElementById("sub");
+    sub.onsubmit = ()=>{alert("您刚刚点击了提交按钮，触发了表单的onsubmit事件")};
+    sub.onreset = ()=>{alert("您刚刚点击了重置按钮，触发了表单的onreset事件")};
+    // 浏览器事件
+    window.onload = ()=>{alert("您刚刚加载了浏览器，触发了onload事件")};
+    window.onscroll =()=>{console.log("您刚刚滚动了滚动条，触发了onscroll事件")};
+    window.onresize = ()=>{console.log("您刚刚改变了浏览器的大小，触发了onresize事件")};
+
+
+
+</script>
+</html>

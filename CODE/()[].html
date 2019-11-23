@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function fn(a) {
+        var arr = [];
+        for (var i = 0; i <= 4; i++) {
+            arr[i] = (b) => {
+                var arr1 = [];
+                for (var j = 0; j <= 5; j++) {
+                    arr1[j] = (c) => {
+                        var arr2 = [];
+                        for (var k = 0; k <= 6; k++) {
+                            arr2[k] = (d) => {
+                                var arr3 = [];
+                                for (var l = 0; l <= 7; l++) {
+                                    arr3[l] = a * b * c * d;
+                                }
+                                console.log("成功调用！")
+                                return arr3;
+                            }
+
+                        }
+                        return arr2;
+                    };
+
+                }
+                return arr1;
+            }
+        }
+        return arr;
+    }
+    console.log(fn(1)[2](3)[4](5)[6](7));
+</script>
+
+</html>

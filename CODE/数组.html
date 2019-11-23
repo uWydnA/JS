@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // function normalize(arr) {
+    //     return arr.map(function getNormalCase(s) {
+    //         var strs = "";
+    //         strs += s[0].toUpperCase();
+    //         for (let i = 1; i < s.length; i++) {
+    //             strs += s[i].toLowerCase();
+    //         }
+    //         return strs;
+    //     });
+    // }
+    // var _name = ['adam', 'LISA', 'barT'];
+    // var result = normalize(_name);
+    // console.log(result);
+    function normalize(arr) {
+       return arr.map(function(s){
+           return  s[0].toUpperCase() + s.slice(1).toLowerCase();
+       })
+
+    //    s => s[0].toUpperCase() + s.slice(1).toLowerCase()
+    }
+    var _name = ['adam', 'LISA', 'barT'];
+    var result = normalize(_name);
+    console.log(result);
+
+  
+
+    
+</script>
+
+</html>

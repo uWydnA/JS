@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function GrandFather() {
+        this.name = 'GrandFather'
+    }
+
+    function Father() {
+        this.age = 32
+    }
+    console.log(Father.prototype);//constructor:Father()
+    Father.prototype = new GrandFather(); // Father函数改变自己的prototype指向
+    console.log(Father.prototype);//Father的原型对象变成了GrandFahter的实例，获得了GrandFather的私有属性。Father.prototype的__proto__指向GrandFather.prototype
+    
+    function Son(){}
+    console.log(Son.prototype)//constructor:Son();
+    Son.prototype = new Father();//Sonh函数改变了自己的prototype指向
+    console.log(Son.prototype);//Son.prototype变成了Father的实例，获得了Father的私有属性。Son.prototye的__proto__指向的是Father.prototype
+    var son = new Son();
+    console.log(son.name)
+    console.log(son.age)
+    console.log(Son.prototype.constructor)
+</script>
+
+</html>
