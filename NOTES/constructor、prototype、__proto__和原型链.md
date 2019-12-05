@@ -32,39 +32,19 @@
 
 ① 当任意一个普通函数用于创建一类对象时，它就被称作构造函数，或构造器。
 
-
-
-
-
-
-
-```
+```js
 function Person() {}
 var person1 = new Person()
 var person2 = new Person()
-复制代码
 ```
-
-
-
-
 
 上面代码Person( )就是person1和person2的构造函数。
 
 ② 可以通过`对象.constructor`拿到创建该实例对象的构造函数。
 
-
-
-
-
-
-
-```
+```js
 console.log(person1.constructor) // 结果输出: [Function: Person]
-复制代码
 ```
-
-
 
 Person函数就是person1对象的构造函数。
 
@@ -76,19 +56,12 @@ Person函数就是person1对象的构造函数。
 
 先看以下代码：
 
-
-
-
-
-
-
-```
+```js
 function Person() {...}
 console.log(Person.constructor) // 输出结果:[Function: Function]
 // 上面是普通函数声明方法，生成具名函数，在声明时就已经生成对象模型。
 console.log(Function.constructor) // 输出结果:[Function: Function]
 console.log(Object.constructor) // 输出结果:[Function: Function]
-复制代码
 ```
 
 上面的代码构造了一个Person函数，我们能看出那些信息？
@@ -99,16 +72,10 @@ console.log(Object.constructor) // 输出结果:[Function: Function]
 
 其实上面三点总结下来就是一句：在JS里，函数就是Function函数的实例对象。也就是我们说的函数即对象。上面的声明函数的代码其实几乎等同于下面代码：
 
-
-
-
-
-
-
-```
+```js
 // 使用Function构造器创建Function对象
 var Person = new Function('...')
-// 几乎？因为这种方式生成的函数是匿名函数[anonymous]，并且只在真正调用时才生成对象模型。复制代码
+// 几乎？因为这种方式生成的函数是匿名函数[anonymous]，并且只在真正调用时才生成对象模型。
 ```
 
 
@@ -123,20 +90,12 @@ var Person = new Function('...')
 
 先忽略__proto__和prototype，直接理解constructor，代码例子：
 
-
-
-
-
-
-
-```
+```js
 function Person() {}
 var person1 = new Person()
 var person2 = new Person()
-复制代码
+
 ```
-
-
 
 下面一张图就画出了它们constructor的指向（忽略了__proto__和prototype）：
 
@@ -160,13 +119,7 @@ var person2 = new Person()
 
 上一步理解是很容易的，然后这时要求你去给Person的两个实例对象加上一个效果相同的方法，你写了以下代码：
 
-
-
-
-
-
-
-```
+```js
 // 下面是给person1和person2实例添加了同一个效果的方法sayHello
 person1.sayHello = function() {
     console.log('Hello!')
@@ -174,7 +127,7 @@ person1.sayHello = function() {
 person2.sayHello = function() {
     console.log('Hello!')
 }
-console.log(person1.sayHello === person2.sayHello) // false，它们不是同一个方法，各自占有内存复制代码
+console.log(person1.sayHello === person2.sayHello) // false，它们不是同一个方法，各自占有内存
 ```
 
 
@@ -187,20 +140,12 @@ console.log(person1.sayHello === person2.sayHello) // false，它们不是同一
 
 当需要为大量实例添加相同效果的方法时，可以将它们存放在prototype对象中，并将该prototype对象放在这些实例的构造函数上，达到共享、公用的效果。代码如下：
 
-
-
-
-
-
-
-```
+```js
 Person.prototype.sayHello = function() {
     console.log('Hello!')
 }
-console.log(person1.sayHello === person2.sayHello) // true，同一个方法复制代码
+console.log(person1.sayHello === person2.sayHello) // true，同一个方法
 ```
-
-
 
 图示如下：
 
@@ -232,13 +177,7 @@ console.log(person1.sayHello === person2.sayHello) // true，同一个方法复�
 
 这时候有人会拿个反例来问：如果是共享属性，那我将两个实例其中一个属性改了，为啥第二个实例没同步？如下面代码：
 
-
-
-
-
-
-
-```
+```js
 function Person() {}
 var person1 = new Person()
 var person2 = new Person()
@@ -246,26 +185,16 @@ console.log(person1.constructor) // [Function: Person]
 console.log(person2.constructor) // [Function: Person]
 person1.constructor = Function
 console.log(person1.constructor) // [Function: Function]
-console.log(person2.constructor) // [Function: Person] ！不是同步为[Function: Function]复制代码
+console.log(person2.constructor) // [Function: Person] ！不是同步为[Function: Function]
 ```
-
-
 
 这个是因为`person1.constructor = Function`改的并不是原型对象上的共享属性constructor，而是给实例person1加了一个constructor属性。如下：
 
-
-
-
-
-
-
-```
-console.log(person1) // 结果：Function { constructor: [Function: Function] }复制代码
+```js
+console.log(person1) // 结果：Function { constructor: [Function: Function] }
 ```
 
-
-
-你可以看到person1实例中多了constructor属性。它原型对象上的constructor是没有改的。
+你可看到person1实例中多了constructor属性。它原型对象上的constructor是没有改的。
 
 **嗯。嗯？嗯？！搞事？！!** 这下共享属性能理解了，但上面的图解明显会造成很大的问题，我们根本不能通过一个`对象.constructor`找回创建自己的构造函数（之间没有箭头链接）！
 
@@ -290,18 +219,10 @@ console.log(person1) // 结果：Function { constructor: [Function: Function] }�
 
 的确，它也是个对象，也的确有个__proto__指向自己的原型对象。那我们尝试用代码找出它的构造函数，如下：
 
-
-
-
-
-
-
-```
+```js
 function Person() {}
-console.log(Person.prototype.__proto__.constructor) // [Function: Object]复制代码
+console.log(Person.prototype.__proto__.constructor) // [Function: Object]
 ```
-
-
 
 因为__proto__指向原型对象，原型对象中的constructor又指向构造函数，所以`Person.prototype.__proto__.constructor`指向的就是Person中prototype对象的构造函数，上面的输出结果说明了prototype的构造函数就是Object函数（对象）。
 
@@ -364,13 +285,7 @@ Object函数作为JS的内置对象，也是充当了很重要的角色。Object
 
 请看下面代码：
 
-
-
-
-
-
-
-```
+```js
 function GrandFather() {
     this.name = 'GrandFather'
 }
@@ -384,7 +299,7 @@ Son.prototype = new Father() // Son函数改变自己的prototype指向
 var son = new Son()
 console.log(son.name) // 结果输出：GrandFather
 console.log(son.age)  // 结果输出：32
-console.log(Son.prototype.constructor) // 结果输出：[Function: GrandFather]复制代码
+console.log(Son.prototype.constructor) // 结果输出：[Function: GrandFather]
 ```
 
 相关指向图如下：
@@ -417,47 +332,23 @@ console.log(Son.prototype.constructor) // 结果输出：[Function: GrandFather]
 
 **① 先造个Person构造函数（爹）做例子**
 
-
-
-
-
-
-
-```
+```js
 function Person(identity){
     this.identity = identity || 'Person'
-}复制代码
+}
 ```
-
-
 
 **② 爹有了，得有个子吧，那就创建一个空对象**
 
-
-
-
-
-
-
-```
+```js
 var obj = {}
-复制代码
 ```
 
 上面的语句为字面式创建对象，实则等同于下面一句
 
-
-
-
-
-
-
-```
+```js
 var obj = new Object()
-复制代码
 ```
-
-
 
 也即说明创建的空对象其实都是Object函数的实例，这么一看，完了吧，子不认爹。
 
@@ -467,19 +358,9 @@ var obj = new Object()
 
 **③ 手动将实例中的__proto__属性指向相应原型对象。**
 
-
-
-
-
-
-
-
-
+```js
+obj.__proto__ = Person.prototype
 ```
-obj.__proto__ = Person.prototype复制代码
-```
-
-
 
 图解如下：
 
@@ -497,21 +378,9 @@ obj.__proto__ = Person.prototype复制代码
 
 **④ 在实例的执行环境内调用构造函数，添加构造函数设置的私有属性/方法。**
 
-
-
-
-
-
-
-
-
+```js
+Person.apply(obj, arguments) // arguments就是参数
 ```
-Person.apply(obj, arguments) // arguments就是参数复制代码
-```
-
-
-
-
 
 我们先要知道构造函数为啥叫构造函数：
 
@@ -521,19 +390,12 @@ Person.apply(obj, arguments) // arguments就是参数复制代码
 
 再看回“老爹”，Person函数：
 
-
-
-
-
-
-
-```
+```js
 function Person(identity){
     this.identity = identity || 'Person' 
 }
 console.log(Person.identity) // 结果输出：undefined
 // 注意不要拿name这个属性做例子，每个函数声明后都自带一个name属性用来保存函数名
-复制代码
 ```
 
 
@@ -550,15 +412,7 @@ console.log(Person.identity) // 结果输出：undefined
 
 **⑤ 整个过程代码如下：**
 
-
-
-
-
-
-
-
-
-```
+```js
 // 构造函数登场
 function Person(identity){
     this.identity = identity || 'Person'
@@ -572,20 +426,14 @@ obj.__proto__ = Person.prototype
 Person.apply(obj, ['son'])
 // End 完成，验证
 console.log(obj.constructor) // 输出结果：[Function: Person]
-console.log(obj.identity) // 输出结果：son复制代码
+console.log(obj.identity) // 输出结果：son
 ```
 
 上面只是一个实例对象new出来的过程，真正实现new方法还需要我们将它封装起来，如下：
 
 **⑥ 封装成new方法**
 
-
-
-
-
-
-
-```
+```js
 // 构造函数登场
 function Person(identity){
   this.identity = identity || 'Person'
@@ -604,7 +452,7 @@ function _new(Fuc) {
 var obj = _new(Person)('son')
 console.log(obj.constructor) // 输出结果：[Function: Person]
 console.log(obj.identity) // 输出结果：son
-复制代码
+
 ```
 
 

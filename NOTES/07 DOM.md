@@ -604,6 +604,8 @@ console.log(obox.attributes[1]);
 #### element.style
 
 > 由.style设置的所有样式都会以行内样式的形式体现
+>
+> **获取的也是行内样式**
 
 - 语法
 
@@ -628,13 +630,13 @@ console.log(obox.attributes[1]);
 - 语法
 
   ```js
-  let style = window.getComputedStyle(element, [pseudoElt]);
+  let style = window.getComputedStyle(element, [pseudoElt]);//第二个参数是fasle,为true的情况下查看的是元素的伪类或者伪元素
   ```
 
 - 返回值
 
   ```js
-  返回的style是一个实时的 CSSStyleDeclaration 对象，当元素的样式更改时，它会自动更新本身。
+  返回的style是一个实时的CSSStyleDeclaration对象，当元素的样式更改时，它会自动更新本身。
   ```
 
 - 实例
@@ -677,6 +679,58 @@ function getStyle(ele,attr){
 
 ### 尺寸类样式的获取
 
+#### offsetWidth
+
+>  **HTMLElement.offsetWidth** 是一个只读属性，返回一个元素的布局宽度。一个典型的（译者注：各浏览器的offsetWidth可能有所不同）offsetWidth是测量包含元素的边框(border)、水平线上的内边距(padding)、竖直方向滚动条(scrollbar)（如果存在的话）、以及CSS设置的宽度(width)的值。 
+>
+>  **content+padding+border**
+
+- 语法
+
+  ```js
+  var offsetWidth =element.offsetWidth;
+  ```
+
+  这个属性将会 round(四舍五入)为一个整数。如果你想要一个fractional(小数)值,请使用[`element.getBoundingClientRect()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect)
+
+- 分类
+
+  1. 假如元素无padding无滚动无border 
+
+     ```
+     offsetWidth = clientWidth = style.width
+     ```
+
+  2. 假如元素有padding无滚动有border
+
+     ```
+     offsetWidth = style.width + style.padding*2 + border宽度*2
+     offsetWidth = clientWidth + border宽度*2
+     ```
+
+  3. 假如元素有padding有滚动，有border，且滚动是显示的 
+
+     ```
+     offsetWidth = style.width + style.padding*2 + (border-width)*2
+     offsetWidth = clientWidth + 滚轴宽度 + border宽度*2
+     ```
+
+      **offsetHeight同理** 
+
+- 实例
+
+  ```js
+  var wid = obox.offsetWidth;//返回一个整数数值
+  ```
+
+  
+
+   ![Image:Dimensions-offset.png](https://developer.mozilla.org/@api/deki/files/186/=Dimensions-offset.png) 
+
+  
+
+
+
 #### offsetHeight
 
 >  **`HTMLElement.offsetHeight`** 是一个只读属性，它返回该元素的像素高度，高度包含该元素的垂直内边距和边框，且是一个整数。**(content+padding+border)**
@@ -702,55 +756,6 @@ function getStyle(ele,attr){
    ![Image:Dimensions-offset.png](https://developer.mozilla.org/@api/deki/files/186/=Dimensions-offset.png)
 
    上面的图片中显示了scollbar和窗口高度的offsetHeight.但是不能滚动的元素可能会有一个很大的高度值，大于可以看见的内容。这些元素原则上是被包含在滚动元素之中的。所以，这些不能滚动的元素可能会因为scrollTop的值会被完全隐藏或者部分隐藏； 
-
-#### offsetWidth
-
->  **HTMLElement.offsetWidth** 是一个只读属性，返回一个元素的布局宽度。一个典型的（译者注：各浏览器的offsetWidth可能有所不同）offsetWidth是测量包含元素的边框(border)、水平线上的内边距(padding)、竖直方向滚动条(scrollbar)（如果存在的话）、以及CSS设置的宽度(width)的值。 
->
-> **content+padding+border**
-
-- 语法
-
-  ```js
-  var offsetWidth =element.offsetWidth;
-  ```
-
-  这个属性将会 round(四舍五入)为一个整数。如果你想要一个fractional(小数)值,请使用[`element.getBoundingClientRect()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect)
-
-- 分类
-
-  1. 假如元素无padding无滚动无border 
-
-     ```
-     offsetWidth = clientWidth = style.width
-     ```
-
-  2. 假如元素有padding无滚动有border
-
-     ```
-     offsetWidth = style.width + style.padding*2 + border宽度*2
-     ```
-
-  3. 假如元素有padding有滚动，有border，且滚动是显示的 
-
-     ```
-     offsetWidth = style.width + style.padding*2 + (border-width)*2
-     offsetWidth = clientWidth + 滚轴宽度 + border宽度*2
-     ```
-
-      **offsetHeight同理** 
-
-- 实例
-
-  ```js
-  var wid = obox.offsetWidth;//返回一个整数数值
-  ```
-
-  
-
-   ![Image:Dimensions-offset.png](https://developer.mozilla.org/@api/deki/files/186/=Dimensions-offset.png) 
-
-  
 
 
 
@@ -939,6 +944,10 @@ function getStyle(ele,attr){
 >  DOM将任何HTML和XML文档描绘成一个由多层节点构成的结构。有几个不同类型的节点，节点又有各自的特点、数据和方法，同时节点之间存在着某种关系，这些关系构成层次。 
 
 DOM内的节点分为四种：元素，文本，注释和属性
+
+|      |      |
+| ---- | ---- |
+|      |      |
 
 
 
@@ -1222,172 +1231,4 @@ list.appendChild(js);
 
 
 
-### Event 对象
-
-> ​	Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。
->
-> ​	事件通常与函数结合使用，函数不会在事件发生前被执行！
->
-> ​	注意，所有事件的语法都是一样的，行为的触发方式有区别
-
-#### 鼠标事件
-
-| 定义     | 事件名      |
-| -------- | ----------- |
-| 左键单击 | click       |
-| 双击     | dblclick    |
-| 右键单击 | contextmenu |
-| 按下     | mousedown   |
-| 移动     | mousemove   |
-| 抬起     | mouseup     |
-| 进入     | mouseover   |
-| 离开     | mouseout    |
-
-
-
-#### 键盘事件
-
-| 定义 | 事件名   | 备注                     |
-| ---- | -------- | ------------------------ |
-| 按下 | keydown  | 一般作用于能加焦点的元素 |
-| 抬起 | keyup    | 一般作用于能加焦点的元素 |
-| 敲击 | keypress | 一般作用于能加焦点的元素 |
-
-
-
-#### 表单事件
-
-| 定义     | 事件名 | 备注           |
-| -------- | ------ | -------------- |
-| 获取焦点 | focus  |                |
-| 失去焦点 | blur   |                |
-| 内容改变 | change | 失去焦点后触发 |
-| 提交     | submit | 作用于form元素 |
-| 重置     | reset  | 作用于form元素 |
-| 输入     | input  | 立即触发       |
-
-
-
-#### 浏览器事件
-
-| 浏览器事件 | window |
-| ---------- | ------ |
-| 加载完成   | load   |
-| 滚动       | scroll |
-| 改变大小   | resize |
-
-#####  onscroll
-
-> 事件在元素滚动条在滚动时触发。 
-
-- 语法
-
-  ```js
-  window.onscroll = ()=>{
-  	console.log(1);
-  }
-  ```
-
-- 实例
-
-  ```js
-  <body style="height: 5000px;">//有滚动条时才可以触发滚动事件
-  </body>
-  
-  <script>
-     
-      window.onscroll = () => {
-          console.log(1);
-      }
-  </script>
-  ```
-
-- 相关变量
-
-  1. **document.documentElement.scrollTop**
-
-     获取右滚动条的位置，可以赋值给该变量，赋值后配合事件触发会改变滚动条的位置
-
-     ```js
-         document.onclick = function(){
-             document.documentElement.scrollTop += 100;
-         }
-     ```
-
-     
-
-  2. **document.documentElement.scrollLeft**
-
-     获取下滚动条的位置，可以赋值给该变量，赋值后配合事件触发会改变滚动条的位置
-
-     ```js
-         document.onclick = function(){
-             document.documentElement.scrollLeft += 100;
-         }
-     ```
-
-
-
-##### onresize()
-
->  onresize 事件会在窗口或框架被调整大小时发生。 
-
-- 语法
-
-  ```js
-  onresize="SomeJavaScriptCode"
-  ```
-
-- 实例
-
-  ```js
-  window.onresize = ()=>{
-      console.log(document.documentElement.clientWidth);
-      console.log(document.documentElement.clientHeight);
-  }
-  ```
-
-- 相关变量
-
-  1. **document.documentElement.clientWidth**
-
-     浏览器窗口宽度
-
-  2. **document.documentElement.clientHeight**
-
-     浏览器窗口高度
-
-
-
-##### onload()
-
->  onload 事件会在页面或图像加载完成后立即发生。 
-
-- 语法
-
-  ```js
-  onload="SomeJavaScriptCode"
-  ```
-
-- 实例
-
-  ```js
-  <head>
-      <script>
-          // onload：页面和资源加载完成触发
-          onload = function(){
-              // console.log(1)
-              var box = document.getElementById("box");
-              console.log(box);
-          }
-  
-      </script>
-  </head>
-  <body style="height: 3000px;">
-      <div id="box">123</div>
-  </body>
-  ```
-
-  按照**浏览器的渲染规则**，该实例的**JS代码**放在了body**前面**去执行，会造成先渲染到JS的时候找不到div元素，因此无法正常工作。
-
-  因此，当JS代码放在body前面执行时，需要配合onload事件才能触发JS。
+- 。
