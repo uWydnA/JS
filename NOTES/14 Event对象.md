@@ -89,7 +89,6 @@ obox.onclick = function(eve){
 
 - 返回值
 
-  ```js
   一个数值，代表按下的鼠标按键：
   
   0：主按键被按下，通常指鼠标左键 or the un-initialized state
@@ -98,8 +97,7 @@ obox.onclick = function(eve){
   3：第四个按钮被按下，通常指浏览器后退按钮
   4：第五个按钮被按下，通常指浏览器的前进按钮
   对于配置为左手使用的鼠标，按键操作将正好相反。此种情况下，从右至左读取值。
-  ```
-
+  
 - 实例
 
   ```js
@@ -600,7 +598,7 @@ document.onkeydown = function(eve){
 
 ##### Event.returnValue
 
->  `**Event.returnValue**` 属性表示该事件的默认操作是否已被阻止。默认情况下，它被设置为true，允许发生默认操作。将该属性设置为false，可以防止默认操作。
+>  `Event.returnValue` 属性表示该事件的默认操作是否已被阻止。默认情况下，它被设置为true，允许发生默认操作。将该属性设置为false，可以防止默认操作。
 
 - 语法
 
@@ -659,19 +657,19 @@ function stopDefault(e){
 
 >  事件触发阶段主要由于事件流：DOM0级事件处理阶段和DOM2级事件处理
 
-##### DOM0级事件
+##### 	DOM0级事件
 
-通过一种赋值方式，是被所有浏览器所支持的，简单易懂容易操作：元素.onclick = function(){}
+​		通过一种赋值方式，是被所有浏览器所支持的，简单易懂容易操作：元素.onclick = function(){}
 
-##### DOM2级事件
+##### 	DOM2级事件
 
-通过所有DOM节点中的方法，可以重复绑定，但是浏览器兼容存在问题
+​		通过所有DOM节点中的方法，可以重复绑定，但是浏览器兼容存在问题
 
-##### 触发顺序
+##### 	触发顺序
 
-- 事件冒泡：从里向外
-- 事件捕获：从外向内
-- 目标阶段：当前元素的当前事件
+ - 事件冒泡：从里向外
+ - 事件捕获：从外向内
+ - 目标阶段：当前元素的当前事件
 
 ![img](file:///D:/APP/feiq/Recv%20Files/JavaScript/%E8%AF%BE%E4%BB%B6/day12/%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1-%E4%B8%8B_files/Image.jpg)
 
@@ -831,6 +829,67 @@ function removeEvent(ele,type,callback){
 
 
 
+##### 闭包封装写法
+
+HTML：
+
+```html
+<div class="box">
+    <p class="red">段落1</p>
+    <span>文本1</span>
+    <p>段落2</p>
+    <span>文本2</span>
+    <p class="red">段落3</p>
+    <span>文本3</span>
+    <h2>二级标题1</h2>
+</div>
+<div class="box1">
+    <p>段落1</p>
+    <span class="red">文本1</span>
+    <p>段落2</p>
+    <span>文本2</span>
+    <p class="red">段落3</p>
+    <span>文本3</span>
+    <h2 class="red">二级标题2</h2>
+</div>
+```
+
+
+
+JS：
+
+```js
+let obox = document.querySelector(".box");
+    let obox1 = document.querySelector(".box1");
+    let aspan = document.querySelectorAll(".box span")
+    let ap = document.querySelectorAll(".box1 p")
+    let ared = document.querySelectorAll(".box1 .red")
+    obox.onclick = fn(aspan,function(){
+        console.log(this);
+        this.style.color = "red";
+    });
+    obox1.onclick = fn(ared,function () { 
+        console.log(this);
+     })
+
+    function fn(achild,callback){
+        return function(eve){
+            let e = eve ||window.event;
+            let target = e.target || e.srcElement;
+            for(let i=0;i<achild.length;i++)
+            {
+                if(target == achild[i])
+                {
+                    callback.call(target);
+                }
+            }
+        }
+
+    }
+```
+
+
+
 
 
 
@@ -902,6 +961,10 @@ function removeEvent(ele,type,callback){
 | 加载完成   | load   |
 | 滚动       | scroll |
 | 改变大小   | resize |
+
+
+
+
 
 #####  onscroll
 

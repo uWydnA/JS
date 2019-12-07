@@ -78,3 +78,35 @@ var target = e.target || e.srcElement
 3. 如果与对象一致，对象的key必须加双引号
 4. 不允许出现没有意义的逗号
 5. 不允许出现undefined,function,NaN
+
+## 下列哪些不是es6中新增的:
+
+- [ ] A	Object.assign
+- [ ] B	Array.from
+- [x] C	forEach
+- [ ] D	for of 循环 
+
+解析：forEach是es5
+
+
+
+## 下列关于window.onload事件的相关说法正确的是
+
+- [ ] A	window.onload事件可能触发多次
+- [ ] B	window.onload事件是指的 DOM结构加载完成之后
+- [ ] C	window.onload 事件可以绑定多个处理函数,并且都会触发
+- [x] D	window.onload 事件在页面所有的内容都加载完毕之后才触发
+
+解析：在文档装载完成后会触发  `load` 事件。此时，在文档中的所有对象都在DOM中，所有图片，脚本，链接以及sub-frames都完成了装载。 
+
+
+
+## 给元素添加事件监听正确的方法
+
+- [ ] A	oDiv.onclick（）
+- [x] B	oDiv.attachEvent（）
+- [x] C	oDiv.addEventListener（）
+- [ ] D	for of 循环 
+
+解析：A的正确用法为oDiv.onclick = function () {}，D为IE8接触事件绑定的方法
+
