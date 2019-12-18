@@ -28,7 +28,7 @@
 2. window.location.href
 3. window.location.assign()
 
-## 写出document选择器有哪些
+## document选择器有哪些
 1.document.getElementById()
 2.document.getElementsByTagName()
 3.document.getElementsByClassName()
@@ -65,7 +65,7 @@ var target = e.target || e.srcElement
 
 ## 对象的本质和意义
 
-**本质：键值对**
+本质：键值对
 
 意义：储存数据，编程
 
@@ -82,9 +82,9 @@ var target = e.target || e.srcElement
 ## 下列哪些不是es6中新增的:
 
 - [ ] A	Object.assign
-- [ ] B	Array.from
-- [x] C	forEach
-- [ ] D	for of 循环 
+	 [ ] B	Array.from
+	 [x] C	forEach
+	 [ ] D	for of 循环 
 
 解析：forEach是es5
 
@@ -93,9 +93,9 @@ var target = e.target || e.srcElement
 ## 下列关于window.onload事件的相关说法正确的是
 
 - [ ] A	window.onload事件可能触发多次
-- [ ] B	window.onload事件是指的 DOM结构加载完成之后
-- [ ] C	window.onload 事件可以绑定多个处理函数,并且都会触发
-- [x] D	window.onload 事件在页面所有的内容都加载完毕之后才触发
+	 [ ] B	window.onload事件是指的 DOM结构加载完成之后
+	 [ ] C	window.onload 事件可以绑定多个处理函数,并且都会触发
+	 [x] D	window.onload 事件在页面所有的内容都加载完毕之后才触发
 
 解析：在文档装载完成后会触发  `load` 事件。此时，在文档中的所有对象都在DOM中，所有图片，脚本，链接以及sub-frames都完成了装载。 
 
@@ -104,9 +104,24 @@ var target = e.target || e.srcElement
 ## 给元素添加事件监听正确的方法
 
 - [ ] A	oDiv.onclick（）
-- [x] B	oDiv.attachEvent（）
-- [x] C	oDiv.addEventListener（）
-- [ ] D	for of 循环 
+	 [x] B	oDiv.attachEvent（）
+	 [x] C	oDiv.addEventListener（）
+	 [ ] D	for of 循环 
 
 解析：A的正确用法为oDiv.onclick = function () {}，D为IE8接触事件绑定的方法
 
+
+
+## 对象的深拷贝
+
+
+
+## 事件流的状态及含义
+
+1. 事件冒泡：从内向外，依次触发所有父级的相同事件
+2. 事件捕获：从外向内，依次触发从最大的父级到目标的相同事件
+3. 目标事件：当前真正要触发的事件
+
+
+
+## AJAX的封装
