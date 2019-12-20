@@ -125,3 +125,11 @@ var target = e.target || e.srcElement
 
 
 ## AJAX的封装
+
+
+
+## mysql如何对数据进行增删改查
+
+
+
+## get与post的区别完整版

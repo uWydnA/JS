@@ -169,7 +169,7 @@ var ele = document.querySelectorAll("span");
 
 #### .firstElementChild
 
-> firstElementChild 返回指定节点的最后一个子元素节点
+> firstElementChild 返回指定节点的第一个子元素节点
 
 - 语法
 
