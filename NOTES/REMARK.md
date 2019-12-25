@@ -133,3 +133,25 @@ var target = e.target || e.srcElement
 
 
 ## get与post的区别完整版
+
+
+
+## 关系选择器的兼容
+
+
+
+## localStorage的方法有哪些
+
+1. localStorage.setItem(key)
+2. localStorage.getItem(key,val)
+3. localStorage.removeItem(key)
+4. localStorage.clear()
+
+## 如何设置一条３天之后过期的在根目录下的cookie
+
+```js
+var d = new Date();
+d.setDate(d.getDate()+3);
+document.cookie = "user=admin;path=/;expires="+d;
+```
+
